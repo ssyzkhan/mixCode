@@ -1,4 +1,4 @@
-import java.util.*;
+import Java.util.*;
 public class Sort{
 	public static void insertionSort(int[] a){
 		int i, j, key, n=a.length;
