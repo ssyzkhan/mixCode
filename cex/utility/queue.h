@@ -2,6 +2,7 @@
 #define _QUEUE_H
 #include<assert.h>
 #include<stdlib.h>
+#include"heap.h"
 struct queue{
 	int length;
 	int heapSize;
@@ -21,7 +22,7 @@ void enQueue(priorityQueue *q,int size, void *e,int(*compare)(void *,void *)){
 		return;
 	int i=q->heapSize++;
 	memcpy(q->heap+i*size,e,size);
-	while(i>0&&compare(q->heap+parent[i]*size,q->heap+i*size)<0){
+	while(i>0&&compare(q->heap+parent(i)*size,q->heap+i*size)<0){
 		swap(q->heap+i*size,q->heap+parent(i)*size,size);
 		i=parent(i);
 	}

@@ -6,5 +6,6 @@ void swap(void* x, void* y, int size){
 	memcpy(x,y,size);
 	memcpy(y,temp,size);
 	free(temp);
+	temp=NULL;
 }
 #endif

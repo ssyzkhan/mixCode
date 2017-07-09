@@ -38,6 +38,7 @@ int doubleGreater(void *x,void *y){
 int doubleLess(void *x, void *y){
 	return doubleGreater(y,x);
 }
+/*
 int treeLess(void *x,void *y){
 	if((*(BinaryTree**)x)->key<(*(BinaryTree**)y)->key)
 		return 1;
@@ -45,4 +46,5 @@ int treeLess(void *x,void *y){
 		return -1;
 	return 0;
 }
+*/
 #endif
