@@ -1,4 +1,4 @@
-import Java.util.*;
+import java.util.*;
 public class Sort{
 	public static void insertionSort(int[] a){
 		int i, j, key, n=a.length;
@@ -59,5 +59,13 @@ public class Sort{
 			LinearList.merge(a,p,q,r,comp);
 		}
 	}
-	
+	public static void heapSort(List<Comparable> a,Comparator comp){
+		int i,heapSize=a.size();
+		LinearList.buildHeap(a,comp);
+		for(i=heapSize-1;i>0;i--){
+			Collections.swap(a,0,i);
+			heapSize--;
+			LinearList.heapify(a,0,heapSize,comp);
+		}
+	}
 }

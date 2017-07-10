@@ -5,6 +5,7 @@ public class test{
 		String[] b={"ChongQing","ShangHai","AoMen","TianJin","BeiJing","XiangGang"};
 		Double[] c={8.5,6.3,1.7,9.2,0.5,2.3,4.1,7.4,5.9,3.7};
 		int i;
+		/*
 		Sort.insertionSort(a);
 		for(i=0;i<10;i++)
 		    System.out.print(a[i]+" ");
@@ -19,6 +20,7 @@ public class test{
 		for(i=0;i<c.length;i++)
 			System.out.print(c[i]+" ");
 		System.out.println();
+		*/
 		
 		ArrayList<Integer> A=new ArrayList<Integer>();
 		for(i=0;i<10;i++)
