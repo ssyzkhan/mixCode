@@ -1,29 +1,30 @@
-import Java.util.*;
+import java.util.*;
 public class LinearList{
 	public static void merge(Comparable[] a,int p,int q,int r){
-		int i,j,k;
-		int n1,n2;
-		n1=q-p+1;
+		int i,j,k,
+		n1=q-p+1,
 		n2=r-q;
-		Comparabe[] L=Arrays.copyOfRange(a,p,q+1),R=Arrays.copyOfRange(a,q+1,r+1);
+		Comparable[] L=Arrays.copyOfRange(a,p,q+1),
+					R=Arrays.copyOfRange(a,q+1,r+1);
+
 		i=j=0;
 		k=p;
 		while(i<n1&&j<n2)
 			if(L[i].compareTo(R[j])<0)
-				a.set(k++,L[i++]);
+				a[k++]=L[i++];
 			else
-				a.set(k++,R[j++]);
+				a[k++]=R[j++];
 		if(i<n1)
 			for(;i<n1;i++)
-				a.set(k++,L[i]);
+				a[k++]=L[i];
 		if(j<n2)
 			for(;j<n2;j++)
-				a.set(k++,R[j]);
+				a[k++]=R[j];
 	}
 	public static void merge(List<Comparable> a, int p, int q, int r){
-		int i,j,k,
+		int i,j,k;
 		int n1,n2;
-		n1=q-p+1,
+		n1=q-p+1;
 		n2=r-q;
 		Comparable[] L=new Comparable[n1],R=new Comparable[n2];
 		for(i=0;i<n1;i++)
@@ -45,9 +46,9 @@ public class LinearList{
 				a.set(k++,R[j]);
 	}
 	public static void merge(List<Comparable> a, int p, int q, int r,Comparator comp){
-		int i,j,k,
+		int i,j,k;
 		int n1,n2;
-		n1=q-p+1,
+		n1=q-p+1;
 		n2=r-q;
 		Comparable[] L=new Comparable[n1],R=new Comparable[n2];
 		for(i=0;i<n1;i++)
@@ -79,6 +80,7 @@ public class LinearList{
 				Collections.swap(a,i,j);
 			}
 		Collections.swap(a,i+1,r);
+		return i+1;
 	}
 	public static int left(int i){
 		return 2*i+1;
@@ -86,10 +88,10 @@ public class LinearList{
 	public static int right(int i){
 		return 2*i+2;
 	}
-	public static parent(int i){
+	public static int parent(int i){
 		if(i%2==1)
-			return i/2;
-		return i/2-1;
+			return (i-1)/2;
+		return (i-2)/2;
 	}
 	public static void heapify(List<Comparable> a,int i, int heapSize,Comparator comp){
 		int l=left(i),r=right(i),most;

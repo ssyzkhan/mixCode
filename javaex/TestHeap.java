@@ -1,8 +1,8 @@
-import Java.util.*;
+import java.util.*;
 public class TestHeap{
 	public static void main(String[] args){
 		int h[]={4,1,3,2,16,9,10,14,8,7},i;
-		vector<Integer> H=new Vector<Integer>();
+		Vector<Integer> H=new Vector<Integer>();
 		for(i=0;i<10;i++)
 			H.add(new Integer(h[i]));
 		LinearList.buildHeap((List)H,new Greater());
