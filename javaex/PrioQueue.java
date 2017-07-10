@@ -5,7 +5,7 @@ public class PrioQueue{
 	private Vector<Comparable> heap;
 	private int heapSize;
 	Comparator comparator;
-	public Prioqueue(){
+	public PrioQueue(){
 		heapSize=0;
 		heap=new Vector<Comparable>();
 		comparator=new Greater();
