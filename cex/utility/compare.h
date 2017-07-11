@@ -1,6 +1,9 @@
 #ifndef _COMPARE_H
 #define _COMPARE_H
-int intGreater(const void *x, const void *y){
+int intGreater(void *x, void *y){
+	return (*((int*)x))-(*((int*)y));
+}
+int intGreaterForQSort(const void *x, const void *y){
 	return (*((int*)x))-(*((int*)y));
 }
 int intLess(void *x, void *y){

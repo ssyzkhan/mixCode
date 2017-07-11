@@ -6,7 +6,7 @@ int main(){
 	char *b[]={"ChongQing","ShangHai","AoMen","TianJin","BeiJing","XiangGang"};
 	double c[]={8.5,6.3,1.7,9.2,0.5,2.3,4.1,7.4,5.9,3.7};
 	
-	qsort(a,10,sizeof(int),intGreater);
+	qsort(a,10,sizeof(int),intGreaterForQSort);
 	
 	for(i=0;i<10;i++)
 		printf("%d ", a[i]);
