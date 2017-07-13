@@ -7,7 +7,8 @@ public class TestMatrix{
 		s=(int[][]) r.second;
 		MatrixChain.printOptimalParens(s,1,6);
 		System.out.println();
-		//System.out.println(m[1][6]);
+		System.out.println(m[1][6]);
+		
 		
 	}
 }
