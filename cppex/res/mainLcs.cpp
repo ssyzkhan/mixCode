@@ -1,5 +1,7 @@
 #include "../utility/lcs.h"
 #include<iostream>
+#include<iterator>
+#include<algorithm>
 using namespace std;
 int main(int argc, char** argv){
 	char *x = "ACCGGTCGAGTGCGCGGAAGCCGGCCGAA", *y="GTCGTTCGGAATGCCGTTGCTCTGTAAA";
@@ -12,5 +14,5 @@ int main(int argc, char** argv){
 	printLcs(c,8,a,b,8,8);
 	cout<<endl;
 	delete []c;
-	//return (EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
