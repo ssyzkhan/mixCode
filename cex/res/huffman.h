@@ -9,13 +9,13 @@ BinaryTree *huffman(int *f, char *d, int n){
 	int i;
 	for(i=0;i<n;i++){
 		*z=buildTree(f[i],d[i],NULL,NULL);
-		enQueue(&Q,sizof(BinaryTree*),z,treeLess);
+		enQueue(&Q,sizeof(BinaryTree*),z,treeLess);
 	}
 	for(i=0;i<n-1;i++){
 		x=*(BinaryTree**)deQueue(&Q,sizeof(BinaryTree*),treeLess);
 		y=*(BinaryTree**)deQueue(&Q,sizeof(BinaryTree*),treeLess);
 		*z=buildTree(x->key+y->key,'*',x,y);
-		enQueue(&Q,sizeof(BinaryTree*),z,treeLess)
+		enQueue(&Q,sizeof(BinaryTree*),z,treeLess);
 	}
 	x=*(BinaryTree**)deQueue(&Q,sizeof(BinaryTree*),treeLess);
 	pqueueClear(&Q);
@@ -23,7 +23,7 @@ BinaryTree *huffman(int *f, char *d, int n){
 }
 void printCode(BinaryTree *root,char *c){
 	int l=strlen(c);
-	char *c1=(char*)malloc((l+2)*sizof(char));
+	char *c1=(char*)malloc((l+2)*sizeof(char));
 	if(root->left!=NULL){
 		strcpy(c1,c);
 		strcat(c1,"0");

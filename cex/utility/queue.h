@@ -36,6 +36,11 @@ void * deQueue(priorityQueue *q, int size,int(*compare)(void *, void *)){
 	heapify(q->heap,size,0,q->heapSize,compare);
 	return top;
 }
+void fix(priorityQueue *q,int size, int(*compare)(void *,void *)){
+	int i;
+	for(i=q->heapSize/2;i>=0;i--)
+		heapify(q->heap,size,i,q->heapSize,compare);
+}
 int empty(priorityQueue q){
 	return q.heapSize<1;
 }
