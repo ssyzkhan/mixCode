@@ -24,6 +24,9 @@ class PrioQueue{
 			heap.erase(heap.end()-1);
 			return top;
 		}
+		void fix(){
+			make_heap(heap.begin(),heap.end(),Comparator());
+		}
 		bool empty(){
 			return heapSize<1;
 		}

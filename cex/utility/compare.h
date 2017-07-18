@@ -1,5 +1,6 @@
 #ifndef _COMPARE_H
 #define _COMPARE_H
+#include"../Datastruct/bintree.h"
 int intGreater(void *x, void *y){
 	return (*((int*)x))-(*((int*)y));
 }
