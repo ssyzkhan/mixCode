@@ -48,9 +48,9 @@ public class test{
 		*/
 		Sort.mergeSort((List)A, 0, 9, new Greater());
 		System.out.println(A);
-		Sort.mergeSort((List)B,0,5, new Less());
+		Sort.mergeSort((List)B,0,5, new Greater());
 		System.out.println(B); 
-		Sort.mergeSort((List)C,0,9, new Greater());
+		Sort.mergeSort((List)C,0,9, new Less());
 		System.out.println(C);
 	}
 }
