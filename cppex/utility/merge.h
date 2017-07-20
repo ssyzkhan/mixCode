@@ -7,8 +7,8 @@ template<typename Iterator>
 void merge(Iterator p, Iterator q, Iterator r){
 	typedef typename iterator_traits<Iterator>::value_type T;
 	long i,j,
-		n1=distance(p,q),
-		n2=distance(q,r);
+		n1=distance(p,q), //(p,q]
+		n2=distance(q,r);  //(q,r]
 	T *L=new T[n1], *R=new T[n2];
 	copy(p,q,L);
 	copy(q,r,R);
@@ -18,7 +18,7 @@ void merge(Iterator p, Iterator q, Iterator r){
 		if(L[i]<R[j])
 			*k=L[i++];
 		else
-			*k=R[j++];
+			*k=R[j++]; 
 		k++;
 	}
 	if(i<n1)

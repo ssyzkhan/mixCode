@@ -21,25 +21,25 @@ int main(){
 	d=(double*)r.first;
 	pi=(int*)r.second;
 	
-	/*
-	for(i=0;i<n;j++){
+
+	for(i=0;i<n;i++){
 		for(j=0;j<n;j++)
 			printf("%1.1f ",d[i*n+j]);
 		printf("\n\n");
-	}	
-	*/
+	}
 	for(i=0;i<n;i++){
 		for(j=0;j<n;j++)
 			printf("%d ",pi[i*n+j]);
 		printf("\n\n");
 	}
-	/*
+
 	for(i=0;i<n;i++){
 		for(j=0;j<n;j++){
 			printAllPairsShotestPath(pi,n,i,j);
 			printf(":%1.1f\n",d[i*n+j]);
 		}
 	}
+
 	free(d);free(pi);
-	*/
+	
 }

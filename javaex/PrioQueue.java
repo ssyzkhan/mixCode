@@ -1,6 +1,6 @@
-import Java.util.Vector;
-import Java.util.Comparator;
-import Java.util.Collections;
+import java.util.Vector;
+import java.util.Comparator;
+import java.util.Collections;
 public class PrioQueue{
 	private Vector<Comparable> heap;
 	private int heapSize;
@@ -10,7 +10,7 @@ public class PrioQueue{
 		heap=new Vector<Comparable>();
 		comparator=new Greater();
 	}
-	public PrioQueue(Comparable comp){
+	public PrioQueue(Comparator comp){
 		heapSize=0;
 		heap=new Vector<Comparable>();
 		comparator=comp;

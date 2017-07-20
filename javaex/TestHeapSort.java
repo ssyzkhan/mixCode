@@ -18,8 +18,8 @@ public class TestHeapSort{
 		System.out.println(A);
 		System.out.println();
 		
-		Sort.heapSort((List)B,new Less());
-		System.out.println(B);
+		Sort.heapSort((List)C,new Less());
+		System.out.println(C);
 		System.out.println();
 	}
 
