@@ -36,4 +36,9 @@ public class PrioQueue{
 	public boolean empty(){
 		return heapSize<=0;
 	}
+	public void fix(){
+		int i;
+		for(i=heapSize/2;i>=0;i--)
+			LinearList.heapify(heap,i,heapSize,comparator);
+	}
 }
