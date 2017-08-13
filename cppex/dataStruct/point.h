@@ -4,9 +4,14 @@
 const double epsilon=1e-10, PI=3.1415926;
 struct Point{
 	double x, y;
+	Point(){}
+	Point(double _x,double _y){
+		x=_x;
+		y=_y;
+	}
 	Point operator +(Point b);
 	Point operator -(Point b);
-	Point operator *(Point b);
+	double operator *(Point b);
 };
 Point Point::operator +(Point b){
 	return Point(this->x+b.x,this->y+b.y);
@@ -14,8 +19,8 @@ Point Point::operator +(Point b){
 Point Point::operator -(Point b){
 	return Point(this->x-b.x,this->y-b.y);
 } 
-Point Point::operator *(Point b){
-	return this->x*b.y-this->y*b.x;
+double Point::operator *(Point b){
+	return (this->x*b.y-this->y*b.x);
 } 
 bool operator ==(Point a, Point b){
 	return ((fabs(a.x-b.x)<epsilon)&&(fabs(a.y-b.y)<epsilon));
@@ -32,8 +37,8 @@ int direction(Point &p0,Point &p1,Point &p2){
 	return 0;
 }
 bool inBox(Point &pi,Point &pj,Point &pk){
-	return min(pi.x,pj.x)<=pk.x&&pk.x<=max(pi.x,pj.x)&&
-			min(pi.y,pj.y)<=pk.y&&pk.y<=max(pi.y,pj.y);
+	return fmin(pi.x,pj.x)<=pk.x&&pk.x<=fmax(pi.x,pj.x)&&
+			fmin(pi.y,pj.y)<=pk.y&&pk.y<=fmax(pi.y,pj.y);
 }
 bool segmentsIntersect(Point &p1,Point &p2,Point &p3,Point &p4){
 	int d1=direction(p3,p4,p1),
