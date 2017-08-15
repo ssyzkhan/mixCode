@@ -28,4 +28,5 @@ void backtrack(CombineProblem<T1,T2> *p){
 	if(!p->flag)
 		cout<<"no solution!"<<endl;
 }
+
 #endif

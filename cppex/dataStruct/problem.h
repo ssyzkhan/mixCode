@@ -14,4 +14,8 @@ class CombineProblem{
 		virtual vector<T2> makeIterms(int k){};
 		virtual bool isPartial(int k){};				
 };
+template<typename T>
+class OptSpecialProblem:public SpecialProblem<T>{
+	
+};
 #endif
