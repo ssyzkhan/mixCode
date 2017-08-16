@@ -15,7 +15,15 @@ class CombineProblem{
 		virtual bool isPartial(int k){};				
 };
 template<typename T>
-class OptSpecialProblem:public SpecialProblem<T>{
-	
+class SpecialProblem{
+	public:
+		T *a;
+		int n;
+		int *x;
+		bool flag;
+		virtual bool isComplete(int k){};
+		virtual void printSolution(int k){};
+		virtual bool isPartial(int k){};				
 };
+
 #endif
