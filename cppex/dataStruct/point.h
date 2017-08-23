@@ -1,6 +1,8 @@
 #ifndef _POINT_H
 #define _POINT_H
 #include"cmath"
+#include"iostream"
+using namespace std;
 const double epsilon=1e-10, PI=3.1415926;
 struct Point{
 	double x, y;
@@ -27,6 +29,21 @@ bool operator ==(Point a, Point b){
 }
 double dist(Point &a,Point &b){
 	return sqrt(pow(a.x-b.x,2)+pow(a.y-b.y,2));
+}
+double polarAngle(Point &p, Point &p0){
+	Point p1 = p-p0;
+	double d = dist(p1,p0);
+	double x1,y1;
+	x1=p1.x/d;
+	y1=p1.y/d;
+	if(x1>=0&&y1>=0)
+		return y1;
+	else if(x1<0&&y1>=0)
+		return PI/2-x1;
+	else if(x1<0&&y1<0)
+		return PI-y1;
+	else
+		return 3*PI/2+x1;
 }
 int direction(Point &p0,Point &p1,Point &p2){
 	double d=(p2-p0)*(p1-p0);

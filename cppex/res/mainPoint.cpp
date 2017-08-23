@@ -19,4 +19,5 @@ int main(){
 		cout<<"Intersect"<<endl;
 	else
 		cout<<"No"<<endl;
+	segmentsIntersect(*p1,*p2,*p3,*p4)?cout<<"Yes\n":cout<<"No\n";
 }

@@ -343,8 +343,35 @@ public class LinearProgramming {
         };
         test(A, b, c);
     }
+    private static void test5() {
+        double[] c = { 18, 12.5 };
+        double[] b = { 20, 12, 16 };
+        double[][] A = {
+            {1, 1 },
+            {1, 0 },
+            {0, 1},
+        };
+        test(A, b, c);
+    }	
+    private static void test6() {
+        double[] c = {-5, -3};
+        double[] b = { 1, 2 };
+        double[][] A = {
+            {1, -1},
+            {2, 1}
+        };
+        test(A, b, c);
+    }
 
-
+    private static void test7() {
+        double[] c = {12, 16};
+        double[] b = {120, 80};
+        double[][] A = {
+            {10, 20},
+            {8, 8}
+        };
+        test(A, b, c);
+    }	
     /**
      * Unit tests the {@code LinearProgramming} data type.
      *
@@ -367,7 +394,15 @@ public class LinearProgramming {
         System.out.println("----- test 4 --------------------");
         test4();
 
+		System.out.println("----- test 5 --------------------");
+        test5();
 
+		System.out.println("----- test 6 --------------------");
+        test6();
+		
+		System.out.println("----- test 7 --------------------");
+        test7();
+/*		
         System.out.println("----- test random ---------------");
         int m = Integer.parseInt(args[0]);
         int n = Integer.parseInt(args[1]);
@@ -383,6 +418,7 @@ public class LinearProgramming {
                 A[i][j] = Math.random()*100;
         LinearProgramming lp = new LinearProgramming(A, b, c);
         System.out.println(lp.value());
+*/
     }
 
 }

@@ -1,14 +1,15 @@
 #ifndef _SEGMENT_H
 #define _SEGMENT_H
 #include"point.h"
+#include<vector>
+using namespace std;
 class EndPoint:public Point{
 	int e;
 	public:
-		EndPoint(double a=0.0,double b=0.0,int c=0):Point(a,b),e(c){
-		}
+		EndPoint(double a=0.0,double b=0.0,int c=0):Point(a,b),e(c){}
 		bool operator<(EndPoint &b);
 		friend class Segment;
-		friend bool anySegmentIntersect(Vector<Segment> &S);
+		friend bool anySegmentIntersect(vecotr<Segment> &S);
 		friend ostream& operator<<(ostream &out,EndPoint &a);
 };
 bool EndPoint::operator <(EndPoint &b){
