@@ -17,7 +17,7 @@ class Graph{
 			for(i=0;i<n;i++)
 				for(j=0;j<n;j++)
 					if(a[i*n+j]!=0.0){
-						vertext node={a[i*n+j],j};
+						vertex node={a[i*n+j],j};
 						adj[i].push_back(node);
 					}
 		}

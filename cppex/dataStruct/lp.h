@@ -1,9 +1,14 @@
 #ifndef _LP_H
 #define _LP_H
 #include<vector>
+#include<cmath>
+#include<limits>
+#include<iostream>
+#include<algorithm>
 using namespace std;
+const double epsilon=1e-10;
 class Lp{
-	vector<vector><double> > A;
+	vector<vector<double> > A;
 	bool initializing;
 	size_t minimum();
 	void initialize_simplex();
@@ -22,7 +27,7 @@ class Lp{
 		void simplex();
 };
 long Lp::find_e(){
-	long i=l;
+	long i=1;
 	while(i<=n&&c[N[i]]<=epsilon)i++;
 	if(i<=n)
 		return N[i];
@@ -31,7 +36,7 @@ long Lp::find_e(){
 }
 long Lp::find_l(long e){
 	long i,l=1;
-	double d, delta=numberic_limits<double>::infinity();
+	double d, delta=numeric_limits<double>::infinity();
 	for(i=1;i<=m;i++){
 		if(A[B[i]][e]>epsilon)
 			d=this->b[B[i]]/A[B[i]][e];
@@ -47,15 +52,17 @@ long Lp::find_l(long e){
 	return B[l];
 }
 void Lp::pivot(size_t l, size_t e){
+	
 	long i,j;
 	b[e]=b[l]/A[l][e];
 	for(j=1;j<=n;j++)
 		if(N[j]!=e)
 			A[e][N[j]]=A[l][N[j]]/A[l][e];
 	A[e][l]=1/A[l][e];
+	
 	for(i=1;i<=m;i++)
 		if(B[i]!=l){
-			b[B[i]]=b[B[i]]-A[B[i]]][e]*b[e];
+			b[B[i]]=b[B[i]]-A[B[i]][e]*b[e];
 			for(j=1;j<=n;j++)
 				A[B[i]][N[j]]=A[B[i]][N[j]]-A[B[i]][e]*A[e][N[j]];
 			A[B[i]][l]=-A[B[i]][e]*A[e][l];
@@ -69,8 +76,13 @@ void Lp::pivot(size_t l, size_t e){
 	pos=find(N.begin(),N.end(),e);
 	N.erase(pos);
 	N.push_back(l);
+	pos=find(B.begin(),B.end(),l);
+	B.erase(pos);
+	B.push_back(e);
+	
 	sort(N.begin(),N.end());
 	sort(B.begin(),B.end());
+	
 }
 void Lp::initialize_simplex(){
 	initializing=true;
@@ -106,14 +118,14 @@ void Lp::initialize_simplex(){
 		if(fabs(c[B[i]])>epsilon){
 			v=v+c[B[i]*b[B[i]]];
 			for(j=1;j<=n;j++)
-				c(N[j])=c[N[j]]+c[B[i]]*(-A[B[i]][N[j]]);
+				c[N[j]]=c[N[j]]+c[B[i]]*(-A[B[i]][N[j]]);
 		}
 	initializing=false;
 }
 void Lp::allocate(){
 	A.resize(m+n+1);
 	for(size_t i=0;i<m+n+1;i++)
-		A[i].resize(m+n+1)
+		A[i].resize(m+n+1);
 	b.resize(m+n+1);
 	c.resize(m+n+1);
 	for(size_t i=0;i<=n;i++)
@@ -133,13 +145,13 @@ size_t Lp::minimum(){
 			k=i;
 		return k;
 }
-Lp::Lp(double *A, double *b, double *c, size_t m1, size_t n1)
+Lp::Lp(double *a, double *b, double *c, size_t m1, size_t n1)
 	:m(m1),n(n1),v(0.0){
 		allocate();
 		copy(b,b+m,this->B.begin()+n+1);
 		copy(c,c+n,this->c.begin()+1);
 		for(size_t i=1;i<=m;i++)
-			copy(A+(i-1)*n,A+i*n,A[n+1].begin()+1);
+			copy(a+(i-1)*n,a+i*n,A[n+i].begin()+1);
 }
 Lp::Lp(const Lp& lp){
 	m=lp.m, n=lp.n, v=lp.v;
@@ -149,23 +161,31 @@ Lp::Lp(const Lp& lp){
 	copy(lp.A.begin(),lp.A.end(),this->A.begin());
 }
 void Lp::simplex(){
+	
 	long e,l,i,j;
 	initialize_simplex();
+	
 	while((e=find_e())>0){
+		
 		l=find_l(e);
+		
 		if(l>=0)
 			pivot(l,e);
-		else
+			
+		else{
 			cout<<"No edge"<<endl;
 			return;
+		}	
 	}
+	
 	double *x=new double(n+m+1);
+	
 	for(i=1;i<=m;i++)
 		x[B[i]]=b[B[i]];
 	for(j=0;j<=n;j++)
 		x[N[j]]=0.0;
 	cout<<"altimatly solution: ";
-	for(i=l;i<=m;i++){
+	for(i=1;i<=m;i++){
 		cout<<"x["<<i<<"]="<<x[i]<< " ";
 	}
 	cout<<endl<<"the value is: "<<v<<endl;
